@@ -748,3 +748,67 @@ document.addEventListener("DOMContentLoaded", () => {
     verificarYMostrarPanelKiosco(savedSession.token);
   }
 });
+// ===============================
+// CHATBOT UMSA
+// ===============================
+
+const chatbotToggle = document.getElementById("chatbot-toggle");
+const chatbotWindow = document.getElementById("chatbot-window");
+const chatbotClose = document.getElementById("chatbot-close");
+const chatbotMessages = document.getElementById("chatbot-messages");
+
+if (chatbotToggle && chatbotWindow) {
+  chatbotToggle.addEventListener("click", () => {
+    chatbotWindow.hidden = !chatbotWindow.hidden;
+  });
+}
+
+if (chatbotClose && chatbotWindow) {
+  chatbotClose.addEventListener("click", () => {
+    chatbotWindow.hidden = true;
+  });
+}
+
+const chatbotResponses = {
+  turno:
+    'Para solicitar un turno, seleccioná "Solicitar turno" y completá tus datos, especialidad, profesional, fecha y horario.',
+
+  consulta:
+    'Para consultar un turno, seleccioná "Consultar turno" e ingresá tu DNI.',
+
+  especialidades:
+    'Actualmente contamos con Clínica Médica, Odontología, Reumatología y Neurología.',
+
+  profesionales:
+    'Nuestro equipo incluye profesionales de Clínica Médica, Odontología, Reumatología y Neurología.',
+
+  faq:
+    'Podés encontrar respuestas sobre turnos, consultas, documentación y especialidades en nuestra sección de Preguntas frecuentes.',
+
+  contacto:
+    '📍 Estamos en San Martín 711, San Andrés de Giles. 📞 Teléfono: 2325 442727. Secretaría: lunes a viernes de 7:00 a 20:00 hs.',
+
+  nosotros:
+    '🏥 UMSA Centro Médico es un centro de emergencias médicas privado que brinda atención y asistencia médica a la comunidad de San Andrés de Giles. Nuestro objetivo es ofrecer una atención cercana, profesional y responsable, acompañando a cada paciente en el cuidado de su salud. ❤️ APOSTÁ A LA VIDA.'
+};
+
+document.querySelectorAll("[data-chat-option]").forEach((button) => {
+  button.addEventListener("click", () => {
+    const option = button.dataset.chatOption;
+    const response = chatbotResponses[option];
+
+    if (!response || !chatbotMessages) return;
+
+    const userMessage = document.createElement("div");
+    userMessage.className = "chatbot-message user";
+    userMessage.textContent = button.textContent;
+    chatbotMessages.appendChild(userMessage);
+
+    const botMessage = document.createElement("div");
+    botMessage.className = "chatbot-message bot";
+    botMessage.textContent = response;
+    chatbotMessages.appendChild(botMessage);
+
+    chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+  });
+});
