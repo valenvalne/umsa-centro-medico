@@ -133,12 +133,12 @@ a {
   text-decoration: none;
 }
 
-.header-phone > span:first-child {
+.header-phone>span:first-child {
   color: var(--red);
   font-size: 1.35rem;
 }
 
-.header-phone > span:last-child {
+.header-phone>span:last-child {
   display: grid;
 }
 
@@ -582,7 +582,7 @@ h1 {
   flex-shrink: 0;
 }
 
-.confirmation > div:last-child > p:not(.eyebrow) {
+.confirmation>div:last-child>p:not(.eyebrow) {
   color: #2b4f40;
   margin-bottom: 1.25rem;
 }
@@ -814,7 +814,7 @@ h1 {
   font-size: clamp(2rem, 4vw, 3.4rem);
 }
 
-.section-intro > p:last-child {
+.section-intro>p:last-child {
   color: var(--muted);
   font-size: 1.05rem;
 }
@@ -832,7 +832,7 @@ h1 {
   border-top: 1px solid var(--line);
 }
 
-.simple-list article > span {
+.simple-list article>span {
   color: var(--red);
   font-size: 0.9rem;
   font-weight: 800;
@@ -911,7 +911,7 @@ h1 {
   color: #ff7c87;
 }
 
-.contact-section > div > p:last-child {
+.contact-section>div>p:last-child {
   color: #b8bec2;
   font-size: 1.05rem;
 }
@@ -929,12 +929,12 @@ h1 {
   margin: 0;
 }
 
-.contact-details p > span:first-child {
+.contact-details p>span:first-child {
   color: #ff7c87;
   font-size: 1.25rem;
 }
 
-.contact-details p > span:last-child {
+.contact-details p>span:last-child {
   display: grid;
   color: #dce0e2;
   font-size: 0.95rem;
@@ -1141,6 +1141,7 @@ footer p {
     animation-duration: 0.001ms !important;
   }
 }
+
 /* ===============================
    CHATBOT UMSA
    =============================== */
@@ -1296,6 +1297,7 @@ footer p {
     bottom: 70px;
   }
 }
+
 .chatbot-toggle {
   width: 200px;
   height: 64px;
@@ -1319,4 +1321,17 @@ footer p {
 .chatbot-toggle:hover {
   transform: translateY(-3px) scale(1.02);
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.28);
+}
+
+.chatbot {
+  position: fixed !important;
+  right: 24px !important;
+  bottom: 24px !important;
+  z-index: 999999 !important;
+}
+
+.chatbot-toggle {
+  position: relative !important;
+  z-index: 999999 !important;
+  pointer-events: auto !important;
 }
