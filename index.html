@@ -16,7 +16,9 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="opiniones.css" />
     <script src="app.js" defer></script>
+    <script src="opiniones.js" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#contenido">Ir al contenido</a>
@@ -34,7 +36,7 @@
           <span aria-hidden="true">☎</span>
           <span><small>Teléfono</small><strong>2325 442727</strong></span>
         </a>
-        <button type="button" class="kiosk-nav-btn" id="btn-kiosk-trigger" aria-label="Acceso Kiosco de atención">
+        <button type="button" class="kiosk-nav-btn" id="btn-kiosk-trigger" onclick="window.location.href='kiosco.html'" aria-label="Acceso Kiosco de atención">
           <span aria-hidden="true">🔑</span>
           <span>Acceso Kiosco</span>
         </button>
@@ -551,8 +553,102 @@
       <p>Centro Médico Integral · San Andrés de Giles</p>
       <p>Ante una emergencia, comunicate con el servicio de emergencias local.</p>
       <div class="footer-bottom-links">
-        <button type="button" class="footer-kiosk-link" id="btn-footer-kiosk">Portal de Operador Kiosco</button>
+        <button type="button" class="footer-kiosk-link" id="btn-footer-kiosk" onclick="window.location.href='kiosco.html'">Portal de Operador Kiosco</button>
       </div>
     </footer>
+
+    <!-- WIDGET FLOTANTE: ¡TU OPINIÓN NOS IMPORTA! -->
+    <div class="opiniones-widget" id="opiniones-widget">
+      <button
+        type="button"
+        class="opiniones-toggle"
+        id="opiniones-toggle"
+        aria-expanded="false"
+        aria-controls="opiniones-window"
+        aria-label="Abrir formulario de opiniones"
+      >
+        <span class="opiniones-icon" aria-hidden="true">⭐</span>
+        <span>¡Tu opinión nos importa!</span>
+      </button>
+
+      <div class="opiniones-window" id="opiniones-window" hidden>
+        <div class="opiniones-header">
+          <div class="opiniones-header-text">
+            <strong>¡Tu opinión nos importa!</strong>
+            <small>Queremos conocer tu experiencia</small>
+          </div>
+          <button
+            type="button"
+            class="opiniones-close"
+            id="opiniones-close"
+            aria-label="Cerrar ventana de opinión"
+          >
+            ×
+          </button>
+        </div>
+
+        <div class="opiniones-body">
+          <form class="opiniones-form" id="opiniones-form" novalidate>
+            <label class="opiniones-field" for="opinion-nombre">
+              <span class="field-label">Nombre y apellido<abbr title="Obligatorio">*</abbr></span>
+              <input
+                type="text"
+                id="opinion-nombre"
+                name="nombre"
+                required
+                placeholder="Ingresá tu nombre"
+                autocomplete="name"
+              />
+            </label>
+
+            <div class="opiniones-field">
+              <span class="field-label">Clasificación<abbr title="Obligatorio">*</abbr></span>
+              <div class="rating-container">
+                <div
+                  class="rating-stars"
+                  id="rating-stars"
+                  role="radiogroup"
+                  aria-label="Calificación de 1 a 5 estrellas"
+                >
+                  <button type="button" class="star-btn" data-value="1" aria-label="1 estrella" role="radio" aria-checked="false">★</button>
+                  <button type="button" class="star-btn" data-value="2" aria-label="2 estrellas" role="radio" aria-checked="false">★</button>
+                  <button type="button" class="star-btn" data-value="3" aria-label="3 estrellas" role="radio" aria-checked="false">★</button>
+                  <button type="button" class="star-btn" data-value="4" aria-label="4 estrellas" role="radio" aria-checked="false">★</button>
+                  <button type="button" class="star-btn" data-value="5" aria-label="5 estrellas" role="radio" aria-checked="false">★</button>
+                </div>
+                <input type="hidden" name="clasificacion" id="opinion-clasificacion" value="" required />
+                <span class="rating-hint" id="rating-hint">Tocá las estrellas para calificar</span>
+              </div>
+            </div>
+
+            <label class="opiniones-field" for="opinion-comentario">
+              <span class="field-label">Comentario<abbr title="Obligatorio">*</abbr></span>
+              <textarea
+                id="opinion-comentario"
+                name="comentario"
+                rows="4"
+                required
+                placeholder="Contanos tu experiencia..."
+              ></textarea>
+            </label>
+
+            <div class="opiniones-error" id="opiniones-error" role="alert" hidden></div>
+
+            <button type="submit" class="opiniones-submit-btn" id="btn-enviar-opinion">
+              ENVIAR OPINIÓN
+            </button>
+          </form>
+
+          <div class="opiniones-success" id="opiniones-success" hidden>
+            <div class="opiniones-success-icon" aria-hidden="true">✓</div>
+            <h3>¡Gracias por tu opinión!</h3>
+            <p>Tus comentarios nos ayudan a seguir mejorando la atención médica en UMSA.</p>
+            <button type="button" class="opiniones-reset-btn" id="btn-nueva-opinion">
+              Dejar otro comentario
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
